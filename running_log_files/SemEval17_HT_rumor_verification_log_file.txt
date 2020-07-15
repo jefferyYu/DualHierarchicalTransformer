@@ -1,0 +1,659 @@
+semeval17
+0
+pre-trained bert without additional bert layer
+07/14/2020 22:10:46 - INFO - __main__ -   device: cuda n_gpu: 1, distributed training: False, 16-bits training: False
+07/14/2020 22:10:53 - INFO - my_bert.tokenization -   loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /home/jfyu/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+07/14/2020 22:10:53 - INFO - __main__ -   LOOKING AT ./rumor_data/semeval17/split_0/train.tsv
+07/14/2020 22:10:55 - INFO - my_bert.modeling -   loading archive file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased.tar.gz from cache at /home/jfyu/.pytorch_pretrained_bert/distributed_-1/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba
+07/14/2020 22:10:55 - INFO - my_bert.modeling -   extracting archive file /home/jfyu/.pytorch_pretrained_bert/distributed_-1/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba to temp dir /tmp/tmphn9r8qh9
+07/14/2020 22:11:00 - INFO - my_bert.modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+07/14/2020 22:11:04 - INFO - my_bert.modeling -   Weights of BertForSequenceClassification not initialized from pretrained model: ['add_bert_attention.layer.0.attention.self.query.weight', 'add_bert_attention.layer.0.attention.self.query.bias', 'add_bert_attention.layer.0.attention.self.key.weight', 'add_bert_attention.layer.0.attention.self.key.bias', 'add_bert_attention.layer.0.attention.self.value.weight', 'add_bert_attention.layer.0.attention.self.value.bias', 'add_bert_attention.layer.0.attention.output.dense.weight', 'add_bert_attention.layer.0.attention.output.dense.bias', 'add_bert_attention.layer.0.attention.output.LayerNorm.weight', 'add_bert_attention.layer.0.attention.output.LayerNorm.bias', 'add_bert_attention.layer.0.intermediate.dense.weight', 'add_bert_attention.layer.0.intermediate.dense.bias', 'add_bert_attention.layer.0.output.dense.weight', 'add_bert_attention.layer.0.output.dense.bias', 'add_bert_attention.layer.0.output.LayerNorm.weight', 'add_bert_attention.layer.0.output.LayerNorm.bias', 'add_bert_pooler.dense.weight', 'add_bert_pooler.dense.bias', 'classifier.weight', 'classifier.bias']
+07/14/2020 22:11:04 - INFO - my_bert.modeling -   Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+training data
+07/14/2020 22:11:12 - INFO - __main__ -   *** Example ***
+07/14/2020 22:11:12 - INFO - __main__ -   guid: train-1
+07/14/2020 22:11:12 - INFO - __main__ -   tokens: [CLS] putin re ##app ##ears on television amid rumours his ' girlfriend ' is about 2 give birth @ sc ##of ##ield _ fx [SEP] [ p a d p a d p a d ] [CLS] @ man ##ko ##mo ##16 @ sc ##of ##ield _ fx ma ##zal ##tov ! they could call the baby uk ##rain ##ia . [SEP] [ p a d p a d p a d ] [CLS] @ conor ##m ##wal ##sh [UNK] @ sc ##of ##ield _ fx [SEP] [ p a d p a d p a d ]
+07/14/2020 22:11:12 - INFO - __main__ -   input_ids: 101 22072 2128 29098 26492 2006 2547 13463 19200 2010 1005 6513 1005 2003 2055 1016 2507 4182 1030 8040 11253 12891 1035 23292 102 0 0 0 0 0 101 1030 2158 3683 5302 16048 1030 8040 11253 12891 1035 23292 5003 16739 26525 999 2027 2071 2655 1996 3336 2866 21166 2401 1012 102 0 0 0 0 101 1030 20545 2213 13476 4095 100 1030 8040 11253 12891 1035 23292 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:12 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:12 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:12 - INFO - __main__ -   label: 2
+dev data
+07/14/2020 22:11:15 - INFO - __main__ -   *** Example ***
+07/14/2020 22:11:15 - INFO - __main__ -   guid: dev-1
+07/14/2020 22:11:15 - INFO - __main__ -   tokens: [CLS] now hearing 148 passengers + crew on board the # a ##32 ##0 that has crashed in southern french alps . # german ##wing ##s flight . @ [SEP] [ p a d p a d p a d ] [CLS] @ lucy ##ho ##cking ##sb ##bc @ bbc ##ne ##ws ##ja ##pan @ bbc ##world [UNK] [UNK] [UNK] 。 [SEP] [ p a d p a d p a d ] [CLS] @ lucy ##ho ##cking ##sb ##bc @ bbc ##world we are just " crew " to you ? ? ? four flight attendants & amp ; two pilots [SEP] [ p a d p a d p a d ]
+07/14/2020 22:11:15 - INFO - __main__ -   input_ids: 101 2085 4994 16459 5467 1009 3626 2006 2604 1996 1001 1037 16703 2692 2008 2038 8007 1999 2670 2413 13698 1012 1001 2446 9328 2015 3462 1012 1030 102 101 1030 7004 6806 23177 19022 9818 1030 4035 2638 9333 3900 9739 1030 4035 11108 100 100 100 1636 102 0 0 0 0 0 0 0 0 0 101 1030 7004 6806 23177 19022 9818 1030 4035 11108 2057 2024 2074 1000 3626 1000 2000 2017 1029 1029 1029 2176 3462 26727 1004 23713 1025 2048 8221 102 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:15 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:15 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:15 - INFO - __main__ -   label: 0
+test data
+07/14/2020 22:11:15 - INFO - __main__ -   *** Example ***
+07/14/2020 22:11:15 - INFO - __main__ -   guid: test-1
+07/14/2020 22:11:15 - INFO - __main__ -   tokens: [CLS] hillary mystery handler spotted with diaz ##ep ##am pen ( seizure drugs ) right next to [UNK] [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe hmm ##m [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe that ##s the same guy that approached her and told her to talk at the podium a few days ago . then she woke [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe look like he is a doctor with fellowship training in clinical ne ##uro ##phy ##sio ##logy / ep ##ile ##psy . no su ##pr [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe here he is with her back in 2011 . [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe lo ##l . . . she needs more than val ##ium to help her out . [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe hitler had similar support . just saying . [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe @ t ##go ##wd ##ys ##ca pick - me - up @ o ##ann @ abc @ cbs ##ne ##ws @ nbc @ cnn [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe lo ##l ! dude , seriously ? it ' s a com ##s device that the secret service uses . i don ' t [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe is she getting shock treatment too ? [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe she ' s screwed up and their claiming that ' s a flashlight i ' ll bet we never see that so called flashlight [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe they should put her in a cry ##ogenic vault , un - freeze her when they get a cure for her disease and then [SEP] [ p a d p a d p a d ] [CLS] woo ##o , worst photos ##hop ever @ nat ##shu ##pe . half - hearted offence for trump , who ' s been into st ##im ##ula ##nts [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe @ just _ a _ tex ##an s that good for short circuits too ? ? [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe @ davis ##ind ##y [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe besides pure evil hillary too sick either illness or drugs to be pre ##s . [SEP] [ p a d p a d p a d ]
+07/14/2020 22:11:15 - INFO - __main__ -   input_ids: 101 18520 6547 28213 7282 2007 12526 13699 3286 7279 1006 18634 5850 1007 2157 2279 2000 100 102 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 17012 2213 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 2008 2015 1996 2168 3124 2008 5411 2014 1998 2409 2014 2000 2831 2012 1996 14502 1037 2261 2420 3283 1012 2059 2016 8271 102 101 1030 14085 14235 5051 2298 2066 2002 2003 1037 3460 2007 7881 2731 1999 6612 11265 10976 21281 20763 6483 1013 4958 9463 18075 1012 2053 10514 18098 102 101 1030 14085 14235 5051 2182 2002 2003 2007 2014 2067 1999 2249 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 8840 2140 1012 1012 1012 2016 3791 2062 2084 11748 5007 2000 2393 2014 2041 1012 102 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 8042 2018 2714 2490 1012 2074 3038 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 1030 1056 3995 21724 7274 3540 4060 1011 2033 1011 2039 1030 1051 11639 1030 5925 1030 6568 2638 9333 1030 6788 1030 13229 102 101 1030 14085 14235 5051 8840 2140 999 12043 1010 5667 1029 2009 1005 1055 1037 4012 2015 5080 2008 1996 3595 2326 3594 1012 1045 2123 1005 1056 102 101 1030 14085 14235 5051 2003 2016 2893 5213 3949 2205 1029 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 2016 1005 1055 14180 2039 1998 2037 6815 2008 1005 1055 1037 15257 1045 1005 2222 6655 2057 2196 2156 2008 2061 2170 15257 102 101 1030 14085 14235 5051 2027 2323 2404 2014 1999 1037 5390 24278 11632 1010 4895 1011 13184 2014 2043 2027 2131 1037 9526 2005 2014 4295 1998 2059 102 101 15854 2080 1010 5409 7760 18471 2412 1030 14085 14235 5051 1012 2431 1011 18627 15226 2005 8398 1010 2040 1005 1055 2042 2046 2358 5714 7068 7666 102 101 1030 14085 14235 5051 1030 2074 1035 1037 1035 16060 2319 1055 2008 2204 2005 2460 13782 2205 1029 1029 102 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 1030 4482 22254 2100 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 4661 5760 4763 18520 2205 5305 2593 7355 2030 5850 2000 2022 3653 2015 1012 102 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:15 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:15 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:11:15 - INFO - __main__ -   label: 0
+07/14/2020 22:11:15 - INFO - __main__ -   *************** Running training ***************
+Epoch:   0%|                                                                                                                               | 0/26 [00:00<?, ?it/s]07/14/2020 22:11:15 - INFO - __main__ -   ********** Epoch: 0 **********
+07/14/2020 22:11:15 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:11:15 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:11:15 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:12:07 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:51<00:00,  1.31it/s]
+07/14/2020 22:12:07 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:12:07 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  /usr/local/anaconda3-tf1/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1272: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+07/14/2020 22:12:11 - INFO - __main__ -   ***** Dev Eval results *****
+07/14/2020 22:12:11 - INFO - __main__ -     eval_accuracy = 0.4
+07/14/2020 22:12:11 - INFO - __main__ -     eval_loss = 1.2563264966011047
+07/14/2020 22:12:11 - INFO - __main__ -     f_score = 0.31589743589743585
+07/14/2020 22:12:11 - INFO - __main__ -     global_step = 68
+07/14/2020 22:12:11 - INFO - __main__ -     loss = 1.055174221010769
+07/14/2020 22:12:11 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:12:11 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:12:11 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:12:14 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.62s/it]
+07/14/2020 22:12:14 - INFO - __main__ -     eval_accuracy = 0.32142857142857145
+07/14/2020 22:12:14 - INFO - __main__ -     eval_loss = 1.2635379433631897
+07/14/2020 22:12:14 - INFO - __main__ -     f_score = 0.22645502645502646
+07/14/2020 22:12:14 - INFO - __main__ -     global_step = 68
+07/14/2020 22:12:14 - INFO - __main__ -     loss = 1.055174221010769
+Epoch:   4%|?????                                                                                                                  | 1/26 [00:58<24:28, 58.74s/it]07/14/2020 22:12:14 - INFO - __main__ -   ********** Epoch: 1 **********
+07/14/2020 22:12:14 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:12:14 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:12:14 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:13:07 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:52<00:00,  1.30it/s]
+07/14/2020 22:13:07 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:13:07 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:13:09 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.56s/it]
+07/14/2020 22:13:09 - INFO - __main__ -     eval_accuracy = 0.4
+07/14/2020 22:13:09 - INFO - __main__ -     eval_loss = 1.3810529112815857
+07/14/2020 22:13:09 - INFO - __main__ -     f_score = 0.1904761904761905
+07/14/2020 22:13:09 - INFO - __main__ -     global_step = 136
+07/14/2020 22:13:09 - INFO - __main__ -     loss = 0.9813672685447861
+07/14/2020 22:13:14 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:13:14 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:13:14 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:13:17 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.67s/it]
+07/14/2020 22:13:17 - INFO - __main__ -     eval_accuracy = 0.35714285714285715
+07/14/2020 22:13:17 - INFO - __main__ -     eval_loss = 1.421019196510315
+07/14/2020 22:13:17 - INFO - __main__ -     f_score = 0.2901960784313726
+07/14/2020 22:13:17 - INFO - __main__ -     global_step = 136
+07/14/2020 22:13:17 - INFO - __main__ -     loss = 0.9813672685447861
+Epoch:   8%|??????????                                                                                                             | 2/26 [02:01<23:58, 59.92s/it]07/14/2020 22:13:17 - INFO - __main__ -   ********** Epoch: 2 **********
+07/14/2020 22:13:17 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:13:17 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:13:17 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:14:10 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:52<00:00,  1.28it/s]
+07/14/2020 22:14:10 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:14:10 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:14:13 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.57s/it]
+07/14/2020 22:14:13 - INFO - __main__ -     eval_accuracy = 0.4
+07/14/2020 22:14:13 - INFO - __main__ -     eval_loss = 1.9483421444892883
+07/14/2020 22:14:13 - INFO - __main__ -     f_score = 0.2833333333333333
+07/14/2020 22:14:13 - INFO - __main__ -     global_step = 204
+07/14/2020 22:14:13 - INFO - __main__ -     loss = 0.8656754309640211
+07/14/2020 22:14:16 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:14:16 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:14:16 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:14:19 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.69s/it]
+07/14/2020 22:14:19 - INFO - __main__ -     eval_accuracy = 0.5357142857142857
+07/14/2020 22:14:19 - INFO - __main__ -     eval_loss = 2.0367735028266907
+07/14/2020 22:14:19 - INFO - __main__ -     f_score = 0.47204066811909956
+07/14/2020 22:14:19 - INFO - __main__ -     global_step = 204
+07/14/2020 22:14:19 - INFO - __main__ -     loss = 0.8656754309640211
+Epoch:  12%|??????????????                                                                                                         | 3/26 [03:03<23:16, 60.71s/it]07/14/2020 22:14:19 - INFO - __main__ -   ********** Epoch: 3 **********
+07/14/2020 22:14:19 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:14:19 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:14:19 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:15:13 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:53<00:00,  1.27it/s]
+07/14/2020 22:15:13 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:15:13 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:15:16 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.58s/it]
+07/14/2020 22:15:16 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:15:16 - INFO - __main__ -     eval_loss = 2.1839141845703125
+07/14/2020 22:15:16 - INFO - __main__ -     f_score = 0.33535353535353535
+07/14/2020 22:15:16 - INFO - __main__ -     global_step = 272
+07/14/2020 22:15:16 - INFO - __main__ -     loss = 0.7355971029576134
+07/14/2020 22:15:21 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:15:21 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:15:21 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:15:24 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.69s/it]
+07/14/2020 22:15:24 - INFO - __main__ -     eval_accuracy = 0.5
+07/14/2020 22:15:24 - INFO - __main__ -     eval_loss = 1.5829180181026459
+07/14/2020 22:15:24 - INFO - __main__ -     f_score = 0.42424242424242425
+07/14/2020 22:15:24 - INFO - __main__ -     global_step = 272
+07/14/2020 22:15:24 - INFO - __main__ -     loss = 0.7355971029576134
+Epoch:  15%|???????????????????                                                                                                    | 4/26 [04:08<22:43, 61.96s/it]07/14/2020 22:15:24 - INFO - __main__ -   ********** Epoch: 4 **********
+07/14/2020 22:15:24 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:15:24 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:15:24 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:16:18 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:53<00:00,  1.25it/s]
+07/14/2020 22:16:18 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:16:18 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:16:21 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.59s/it]
+07/14/2020 22:16:21 - INFO - __main__ -     eval_accuracy = 0.4
+07/14/2020 22:16:21 - INFO - __main__ -     eval_loss = 2.6526201963424683
+07/14/2020 22:16:21 - INFO - __main__ -     f_score = 0.1904761904761905
+07/14/2020 22:16:21 - INFO - __main__ -     global_step = 340
+07/14/2020 22:16:21 - INFO - __main__ -     loss = 0.460186681984102
+07/14/2020 22:16:21 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:16:21 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:16:21 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:16:24 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.70s/it]
+07/14/2020 22:16:24 - INFO - __main__ -     eval_accuracy = 0.5
+07/14/2020 22:16:24 - INFO - __main__ -     eval_loss = 2.0690536499023438
+07/14/2020 22:16:24 - INFO - __main__ -     f_score = 0.42735042735042733
+07/14/2020 22:16:24 - INFO - __main__ -     global_step = 340
+07/14/2020 22:16:24 - INFO - __main__ -     loss = 0.460186681984102
+Epoch:  19%|???????????????????????                                                                                                | 5/26 [05:08<21:27, 61.33s/it]07/14/2020 22:16:24 - INFO - __main__ -   ********** Epoch: 5 **********
+07/14/2020 22:16:24 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:16:24 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:16:24 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:17:19 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:17:19 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:17:19 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:17:22 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:17:22 - INFO - __main__ -     eval_accuracy = 0.4
+07/14/2020 22:17:22 - INFO - __main__ -     eval_loss = 2.3101800680160522
+07/14/2020 22:17:22 - INFO - __main__ -     f_score = 0.31589743589743585
+07/14/2020 22:17:22 - INFO - __main__ -     global_step = 408
+07/14/2020 22:17:22 - INFO - __main__ -     loss = 0.2447619889588917
+07/14/2020 22:17:22 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:17:22 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:17:22 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:17:25 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.73s/it]
+07/14/2020 22:17:25 - INFO - __main__ -     eval_accuracy = 0.35714285714285715
+07/14/2020 22:17:25 - INFO - __main__ -     eval_loss = 2.65326726436615
+07/14/2020 22:17:25 - INFO - __main__ -     f_score = 0.2828282828282828
+07/14/2020 22:17:25 - INFO - __main__ -     global_step = 408
+07/14/2020 22:17:25 - INFO - __main__ -     loss = 0.2447619889588917
+Epoch:  23%|????????????????????????????                                                                                           | 6/26 [06:09<20:25, 61.29s/it]07/14/2020 22:17:25 - INFO - __main__ -   ********** Epoch: 6 **********
+07/14/2020 22:17:25 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:17:25 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:17:25 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:18:21 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:18:21 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:18:21 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:18:24 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.63s/it]
+07/14/2020 22:18:24 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:18:24 - INFO - __main__ -     eval_loss = 3.22366464138031
+07/14/2020 22:18:24 - INFO - __main__ -     f_score = 0.33535353535353535
+07/14/2020 22:18:24 - INFO - __main__ -     global_step = 476
+07/14/2020 22:18:24 - INFO - __main__ -     loss = 0.10463913705419092
+07/14/2020 22:18:27 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:18:27 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:18:27 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:18:30 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:18:30 - INFO - __main__ -     eval_accuracy = 0.5
+07/14/2020 22:18:30 - INFO - __main__ -     eval_loss = 2.185327172279358
+07/14/2020 22:18:30 - INFO - __main__ -     f_score = 0.42512077294685985
+07/14/2020 22:18:30 - INFO - __main__ -     global_step = 476
+07/14/2020 22:18:30 - INFO - __main__ -     loss = 0.10463913705419092
+Epoch:  27%|????????????????????????????????                                                                                       | 7/26 [07:14<19:44, 62.37s/it]07/14/2020 22:18:30 - INFO - __main__ -   ********** Epoch: 7 **********
+07/14/2020 22:18:30 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:18:30 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:18:30 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:19:25 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.22it/s]
+07/14/2020 22:19:25 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:19:25 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:19:28 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:19:28 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:19:28 - INFO - __main__ -     eval_loss = 2.9580373764038086
+07/14/2020 22:19:28 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:19:28 - INFO - __main__ -     global_step = 544
+07/14/2020 22:19:28 - INFO - __main__ -     loss = 0.004908579237320844
+07/14/2020 22:19:31 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:19:31 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:19:31 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:19:34 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.70s/it]
+07/14/2020 22:19:34 - INFO - __main__ -     eval_accuracy = 0.5714285714285714
+07/14/2020 22:19:34 - INFO - __main__ -     eval_loss = 1.6227073669433594
+07/14/2020 22:19:34 - INFO - __main__ -     f_score = 0.5577485380116959
+07/14/2020 22:19:34 - INFO - __main__ -     global_step = 544
+07/14/2020 22:19:34 - INFO - __main__ -     loss = 0.004908579237320844
+Epoch:  31%|?????????????????????????????????????                                                                                  | 8/26 [08:18<18:52, 62.92s/it]07/14/2020 22:19:34 - INFO - __main__ -   ********** Epoch: 8 **********
+07/14/2020 22:19:34 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:19:34 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:19:34 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:20:29 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.24it/s]
+07/14/2020 22:20:29 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:20:29 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:20:32 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:20:32 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:20:32 - INFO - __main__ -     eval_loss = 3.2790114879608154
+07/14/2020 22:20:32 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:20:32 - INFO - __main__ -     global_step = 612
+07/14/2020 22:20:32 - INFO - __main__ -     loss = 0.0015057079932268929
+07/14/2020 22:20:36 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:20:36 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:20:36 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:20:39 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.70s/it]
+07/14/2020 22:20:39 - INFO - __main__ -     eval_accuracy = 0.5714285714285714
+07/14/2020 22:20:39 - INFO - __main__ -     eval_loss = 1.8138351887464523
+07/14/2020 22:20:39 - INFO - __main__ -     f_score = 0.5577485380116959
+07/14/2020 22:20:39 - INFO - __main__ -     global_step = 612
+07/14/2020 22:20:39 - INFO - __main__ -     loss = 0.0015057079932268929
+Epoch:  35%|??????????????????????????????????????????                                                                             | 9/26 [09:23<17:57, 63.41s/it]07/14/2020 22:20:39 - INFO - __main__ -   ********** Epoch: 9 **********
+07/14/2020 22:20:39 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:20:39 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:20:39 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:21:34 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:21:34 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:21:34 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:21:37 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:21:37 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:21:37 - INFO - __main__ -     eval_loss = 3.44853675365448
+07/14/2020 22:21:37 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:21:37 - INFO - __main__ -     global_step = 680
+07/14/2020 22:21:37 - INFO - __main__ -     loss = 0.0010381919496199664
+07/14/2020 22:21:41 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:21:41 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:21:41 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:21:44 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:21:44 - INFO - __main__ -     eval_accuracy = 0.5714285714285714
+07/14/2020 22:21:44 - INFO - __main__ -     eval_loss = 1.931195229291916
+07/14/2020 22:21:44 - INFO - __main__ -     f_score = 0.5577485380116959
+07/14/2020 22:21:44 - INFO - __main__ -     global_step = 680
+07/14/2020 22:21:44 - INFO - __main__ -     loss = 0.0010381919496199664
+Epoch:  38%|??????????????????????????????????????????????                                                                        | 10/26 [10:28<17:02, 63.88s/it]07/14/2020 22:21:44 - INFO - __main__ -   ********** Epoch: 10 **********
+07/14/2020 22:21:44 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:21:44 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:21:44 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:22:39 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.22it/s]
+07/14/2020 22:22:39 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:22:39 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:22:42 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:22:42 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:22:42 - INFO - __main__ -     eval_loss = 3.5720620155334473
+07/14/2020 22:22:42 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:22:42 - INFO - __main__ -     global_step = 748
+07/14/2020 22:22:42 - INFO - __main__ -     loss = 0.0009096221012227676
+07/14/2020 22:22:45 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:22:45 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:22:45 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:22:48 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:22:48 - INFO - __main__ -     eval_accuracy = 0.5714285714285714
+07/14/2020 22:22:48 - INFO - __main__ -     eval_loss = 2.0240428745746613
+07/14/2020 22:22:48 - INFO - __main__ -     f_score = 0.5577485380116959
+07/14/2020 22:22:48 - INFO - __main__ -     global_step = 748
+07/14/2020 22:22:48 - INFO - __main__ -     loss = 0.0009096221012227676
+Epoch:  42%|??????????????????????????????????????????????????                                                                    | 11/26 [11:32<16:00, 64.04s/it]07/14/2020 22:22:48 - INFO - __main__ -   ********** Epoch: 11 **********
+07/14/2020 22:22:48 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:22:48 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:22:48 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:23:44 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:23:44 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:23:44 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:23:47 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.63s/it]
+07/14/2020 22:23:47 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:23:47 - INFO - __main__ -     eval_loss = 3.6469404697418213
+07/14/2020 22:23:47 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:23:47 - INFO - __main__ -     global_step = 816
+07/14/2020 22:23:47 - INFO - __main__ -     loss = 0.0007057593149297378
+07/14/2020 22:23:50 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:23:50 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:23:50 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:23:53 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:23:53 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:23:53 - INFO - __main__ -     eval_loss = 2.078472763299942
+07/14/2020 22:23:53 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:23:53 - INFO - __main__ -     global_step = 816
+07/14/2020 22:23:53 - INFO - __main__ -     loss = 0.0007057593149297378
+Epoch:  46%|???????????????????????????????????????????????????????                                                               | 12/26 [12:37<14:59, 64.26s/it]07/14/2020 22:23:53 - INFO - __main__ -   ********** Epoch: 12 **********
+07/14/2020 22:23:53 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:23:53 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:23:53 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:24:48 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.24it/s]
+07/14/2020 22:24:48 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:24:48 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:24:51 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:24:51 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:24:51 - INFO - __main__ -     eval_loss = 3.7026537656784058
+07/14/2020 22:24:51 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:24:51 - INFO - __main__ -     global_step = 884
+07/14/2020 22:24:51 - INFO - __main__ -     loss = 0.0007088017814299639
+07/14/2020 22:24:55 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:24:55 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:24:55 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:24:58 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:24:58 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:24:58 - INFO - __main__ -     eval_loss = 2.1135990917682648
+07/14/2020 22:24:58 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:24:58 - INFO - __main__ -     global_step = 884
+07/14/2020 22:24:58 - INFO - __main__ -     loss = 0.0007088017814299639
+Epoch:  50%|???????????????????????????????????????????????????????????                                                           | 13/26 [13:42<13:58, 64.54s/it]07/14/2020 22:24:58 - INFO - __main__ -   ********** Epoch: 13 **********
+07/14/2020 22:24:58 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:24:58 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:24:58 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:25:53 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.23it/s]
+07/14/2020 22:25:53 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:25:53 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:25:56 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:25:56 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:25:56 - INFO - __main__ -     eval_loss = 3.7578707933425903
+07/14/2020 22:25:56 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:25:56 - INFO - __main__ -     global_step = 952
+07/14/2020 22:25:56 - INFO - __main__ -     loss = 0.0006284152760225184
+07/14/2020 22:26:00 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:26:00 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:26:00 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:26:03 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.70s/it]
+07/14/2020 22:26:03 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:26:03 - INFO - __main__ -     eval_loss = 2.147940307855606
+07/14/2020 22:26:03 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:26:03 - INFO - __main__ -     global_step = 952
+07/14/2020 22:26:03 - INFO - __main__ -     loss = 0.0006284152760225184
+Epoch:  54%|????????????????????????????????????????????????????????????????                                                      | 14/26 [14:47<12:53, 64.49s/it]07/14/2020 22:26:03 - INFO - __main__ -   ********** Epoch: 14 **********
+07/14/2020 22:26:03 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:26:03 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:26:03 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:26:58 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.24it/s]
+07/14/2020 22:26:58 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:26:58 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:27:01 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:27:01 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:27:01 - INFO - __main__ -     eval_loss = 3.7942984104156494
+07/14/2020 22:27:01 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:27:01 - INFO - __main__ -     global_step = 1020
+07/14/2020 22:27:01 - INFO - __main__ -     loss = 0.0005610374843373018
+07/14/2020 22:27:05 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:27:05 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:27:05 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:27:08 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:27:08 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:27:08 - INFO - __main__ -     eval_loss = 2.176072120666504
+07/14/2020 22:27:08 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:27:08 - INFO - __main__ -     global_step = 1020
+07/14/2020 22:27:08 - INFO - __main__ -     loss = 0.0005610374843373018
+Epoch:  58%|????????????????????????????????????????????????????????????????????                                                  | 15/26 [15:52<11:52, 64.78s/it]07/14/2020 22:27:08 - INFO - __main__ -   ********** Epoch: 15 **********
+07/14/2020 22:27:08 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:27:08 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:27:08 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:28:03 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.24it/s]
+07/14/2020 22:28:03 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:28:03 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:28:06 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.64s/it]
+07/14/2020 22:28:06 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:28:06 - INFO - __main__ -     eval_loss = 3.8286468982696533
+07/14/2020 22:28:06 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:28:06 - INFO - __main__ -     global_step = 1088
+07/14/2020 22:28:06 - INFO - __main__ -     loss = 0.0005399865262648638
+07/14/2020 22:28:10 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:28:10 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:28:10 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:28:13 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:28:13 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:28:13 - INFO - __main__ -     eval_loss = 2.1978364884853363
+07/14/2020 22:28:13 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:28:13 - INFO - __main__ -     global_step = 1088
+07/14/2020 22:28:13 - INFO - __main__ -     loss = 0.0005399865262648638
+Epoch:  62%|?????????????????????????????????????????????????????????????????????????                                             | 16/26 [16:57<10:48, 64.86s/it]07/14/2020 22:28:13 - INFO - __main__ -   ********** Epoch: 16 **********
+07/14/2020 22:28:13 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:28:13 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:28:13 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:29:08 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.24it/s]
+07/14/2020 22:29:08 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:29:08 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:29:11 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:29:11 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:29:11 - INFO - __main__ -     eval_loss = 3.8520689010620117
+07/14/2020 22:29:11 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:29:11 - INFO - __main__ -     global_step = 1156
+07/14/2020 22:29:11 - INFO - __main__ -     loss = 0.00049667148029103
+07/14/2020 22:29:14 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:29:14 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:29:14 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:29:18 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:29:18 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:29:18 - INFO - __main__ -     eval_loss = 2.2124171257019043
+07/14/2020 22:29:18 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:29:18 - INFO - __main__ -     global_step = 1156
+07/14/2020 22:29:18 - INFO - __main__ -     loss = 0.00049667148029103
+Epoch:  65%|??????????????????????????????????????????????????????????????????????????????                                        | 17/26 [18:02<09:42, 64.73s/it]07/14/2020 22:29:18 - INFO - __main__ -   ********** Epoch: 17 **********
+07/14/2020 22:29:18 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:29:18 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:29:18 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:30:13 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:30:13 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:30:13 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:30:16 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.63s/it]
+07/14/2020 22:30:16 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:30:16 - INFO - __main__ -     eval_loss = 3.8728832006454468
+07/14/2020 22:30:16 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:30:16 - INFO - __main__ -     global_step = 1224
+07/14/2020 22:30:16 - INFO - __main__ -     loss = 0.000486982219359454
+07/14/2020 22:30:20 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:30:20 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:30:20 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:30:23 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.70s/it]
+07/14/2020 22:30:23 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:30:23 - INFO - __main__ -     eval_loss = 2.222799628973007
+07/14/2020 22:30:23 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:30:23 - INFO - __main__ -     global_step = 1224
+07/14/2020 22:30:23 - INFO - __main__ -     loss = 0.000486982219359454
+Epoch:  69%|??????????????????????????????????????????????????????????????????????????????????                                    | 18/26 [19:07<08:38, 64.85s/it]07/14/2020 22:30:23 - INFO - __main__ -   ********** Epoch: 18 **********
+07/14/2020 22:30:23 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:30:23 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:30:23 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:31:18 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.22it/s]
+07/14/2020 22:31:18 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:31:18 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:31:21 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:31:21 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:31:21 - INFO - __main__ -     eval_loss = 3.886733055114746
+07/14/2020 22:31:21 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:31:21 - INFO - __main__ -     global_step = 1292
+07/14/2020 22:31:21 - INFO - __main__ -     loss = 0.0004839844563428093
+07/14/2020 22:31:24 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:31:24 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:31:24 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:31:27 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:31:27 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:31:27 - INFO - __main__ -     eval_loss = 2.2313248813152313
+07/14/2020 22:31:27 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:31:27 - INFO - __main__ -     global_step = 1292
+07/14/2020 22:31:27 - INFO - __main__ -     loss = 0.0004839844563428093
+Epoch:  73%|???????????????????????????????????????????????????????????????????????????????????????                               | 19/26 [20:11<07:33, 64.74s/it]07/14/2020 22:31:27 - INFO - __main__ -   ********** Epoch: 19 **********
+07/14/2020 22:31:27 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:31:27 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:31:27 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:32:22 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.24it/s]
+07/14/2020 22:32:22 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:32:22 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:32:25 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:32:25 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:32:25 - INFO - __main__ -     eval_loss = 3.8977584838867188
+07/14/2020 22:32:25 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:32:25 - INFO - __main__ -     global_step = 1360
+07/14/2020 22:32:25 - INFO - __main__ -     loss = 0.0004606019048129811
+07/14/2020 22:32:29 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:32:29 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:32:29 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:32:32 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:32:32 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:32:32 - INFO - __main__ -     eval_loss = 2.2385793030261993
+07/14/2020 22:32:32 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:32:32 - INFO - __main__ -     global_step = 1360
+07/14/2020 22:32:32 - INFO - __main__ -     loss = 0.0004606019048129811
+Epoch:  77%|???????????????????????????????????????????????????????????????????????????????????????????                           | 20/26 [21:16<06:28, 64.67s/it]07/14/2020 22:32:32 - INFO - __main__ -   ********** Epoch: 20 **********
+07/14/2020 22:32:32 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:32:32 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:32:32 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:33:27 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:33:27 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:33:27 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:33:30 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:33:30 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:33:30 - INFO - __main__ -     eval_loss = 3.9053789377212524
+07/14/2020 22:33:30 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:33:30 - INFO - __main__ -     global_step = 1428
+07/14/2020 22:33:30 - INFO - __main__ -     loss = 0.00046399586340960334
+07/14/2020 22:33:34 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:33:34 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:33:34 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:33:37 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:33:37 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:33:37 - INFO - __main__ -     eval_loss = 2.2437152564525604
+07/14/2020 22:33:37 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:33:37 - INFO - __main__ -     global_step = 1428
+07/14/2020 22:33:37 - INFO - __main__ -     loss = 0.00046399586340960334
+Epoch:  81%|????????????????????????????????????????????????????????????????????????????????????????????????                      | 21/26 [22:21<05:24, 64.92s/it]07/14/2020 22:33:37 - INFO - __main__ -   ********** Epoch: 21 **********
+07/14/2020 22:33:37 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:33:37 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:33:37 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:34:32 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.23it/s]
+07/14/2020 22:34:32 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:34:32 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:34:35 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:34:35 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:34:35 - INFO - __main__ -     eval_loss = 3.9108632802963257
+07/14/2020 22:34:35 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:34:35 - INFO - __main__ -     global_step = 1496
+07/14/2020 22:34:35 - INFO - __main__ -     loss = 0.00046575069427490234
+07/14/2020 22:34:39 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:34:39 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:34:39 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:34:43 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.70s/it]
+07/14/2020 22:34:43 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:34:43 - INFO - __main__ -     eval_loss = 2.24775168299675
+07/14/2020 22:34:43 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:34:43 - INFO - __main__ -     global_step = 1496
+07/14/2020 22:34:43 - INFO - __main__ -     loss = 0.00046575069427490234
+Epoch:  85%|????????????????????????????????????????????????????????????????????????????????????????????????????                  | 22/26 [23:27<04:20, 65.03s/it]07/14/2020 22:34:43 - INFO - __main__ -   ********** Epoch: 22 **********
+07/14/2020 22:34:43 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:34:43 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:34:43 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:35:37 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.24it/s]
+07/14/2020 22:35:37 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:35:37 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:35:40 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:35:40 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:35:40 - INFO - __main__ -     eval_loss = 3.913981795310974
+07/14/2020 22:35:40 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:35:40 - INFO - __main__ -     global_step = 1564
+07/14/2020 22:35:40 - INFO - __main__ -     loss = 0.0004500922034768497
+07/14/2020 22:35:45 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:35:45 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:35:45 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:35:48 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:35:48 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:35:48 - INFO - __main__ -     eval_loss = 2.249841809272766
+07/14/2020 22:35:48 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:35:48 - INFO - __main__ -     global_step = 1564
+07/14/2020 22:35:48 - INFO - __main__ -     loss = 0.0004500922034768497
+Epoch:  88%|?????????????????????????????????????????????????????????????????????????????????????????????????????????             | 23/26 [24:32<03:15, 65.19s/it]07/14/2020 22:35:48 - INFO - __main__ -   ********** Epoch: 23 **********
+07/14/2020 22:35:48 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:35:48 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:35:48 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:36:43 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:36:43 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:36:43 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:36:46 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:36:46 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:36:46 - INFO - __main__ -     eval_loss = 3.9157986640930176
+07/14/2020 22:36:46 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:36:46 - INFO - __main__ -     global_step = 1632
+07/14/2020 22:36:46 - INFO - __main__ -     loss = 0.0004588944070479449
+07/14/2020 22:36:51 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:36:51 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:36:51 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:36:54 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.70s/it]
+07/14/2020 22:36:54 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:36:54 - INFO - __main__ -     eval_loss = 2.2512154579162598
+07/14/2020 22:36:54 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:36:54 - INFO - __main__ -     global_step = 1632
+07/14/2020 22:36:54 - INFO - __main__ -     loss = 0.0004588944070479449
+Epoch:  92%|?????????????????????????????????????????????????????????????????????????????????????????????????????????????         | 24/26 [25:38<02:10, 65.41s/it]07/14/2020 22:36:54 - INFO - __main__ -   ********** Epoch: 24 **********
+07/14/2020 22:36:54 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:36:54 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:36:54 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:37:49 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:54<00:00,  1.23it/s]
+07/14/2020 22:37:49 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:37:49 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:37:52 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.62s/it]
+07/14/2020 22:37:52 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:37:52 - INFO - __main__ -     eval_loss = 3.9163272380828857
+07/14/2020 22:37:52 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:37:52 - INFO - __main__ -     global_step = 1700
+07/14/2020 22:37:52 - INFO - __main__ -     loss = 0.0004520153298097498
+07/14/2020 22:37:56 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:37:56 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:37:56 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:37:59 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:37:59 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:37:59 - INFO - __main__ -     eval_loss = 2.2515689432621
+07/14/2020 22:37:59 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:37:59 - INFO - __main__ -     global_step = 1700
+07/14/2020 22:37:59 - INFO - __main__ -     loss = 0.0004520153298097498
+Epoch:  96%|??????????????????????????????????????????????????????????????????????????????????????????????????????????????????    | 25/26 [26:43<01:05, 65.37s/it]07/14/2020 22:37:59 - INFO - __main__ -   ********** Epoch: 25 **********
+07/14/2020 22:37:59 - INFO - __main__ -     Num examples = 272
+07/14/2020 22:37:59 - INFO - __main__ -     Batch size = 4
+07/14/2020 22:37:59 - INFO - __main__ -     Num steps = 1768
+                                                                                                                                                                  07/14/2020 22:38:54 - INFO - __main__ -   ***** Running evaluation on Dev Set*****????????????????????????????????????????????????| 68/68 [00:55<00:00,  1.23it/s]
+07/14/2020 22:38:54 - INFO - __main__ -     Num examples = 25
+07/14/2020 22:38:54 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:38:57 - INFO - __main__ -   ***** Dev Eval results *****??????????????????????????????????????????????????????????????| 2/2 [00:02<00:00,  1.63s/it]
+07/14/2020 22:38:57 - INFO - __main__ -     eval_accuracy = 0.44
+07/14/2020 22:38:57 - INFO - __main__ -     eval_loss = 3.916357398033142
+07/14/2020 22:38:57 - INFO - __main__ -     f_score = 0.3194444444444444
+07/14/2020 22:38:57 - INFO - __main__ -     global_step = 1768
+07/14/2020 22:38:57 - INFO - __main__ -     loss = 0.00045027627664453844
+07/14/2020 22:39:01 - INFO - __main__ -   ***** Running evaluation on Test Set*****
+07/14/2020 22:39:01 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:39:01 - INFO - __main__ -     Batch size = 16
+                                                                                                                                                                  07/14/2020 22:39:04 - INFO - __main__ -   ***** Test Eval results *****?????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.71s/it]
+07/14/2020 22:39:04 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:39:04 - INFO - __main__ -     eval_loss = 2.2515876591205597
+07/14/2020 22:39:04 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:39:04 - INFO - __main__ -     global_step = 1768
+07/14/2020 22:39:04 - INFO - __main__ -     loss = 0.00045027627664453844
+Epoch: 100%|??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????| 26/26 [27:48<00:00, 65.21s/it]
+07/14/2020 22:39:06 - INFO - my_bert.modeling -   loading archive file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased.tar.gz from cache at /home/jfyu/.pytorch_pretrained_bert/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba
+07/14/2020 22:39:06 - INFO - my_bert.modeling -   extracting archive file /home/jfyu/.pytorch_pretrained_bert/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba to temp dir /tmp/tmpfgt78w12
+07/14/2020 22:39:11 - INFO - my_bert.modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+07/14/2020 22:39:15 - INFO - __main__ -   *** Example ***
+07/14/2020 22:39:15 - INFO - __main__ -   guid: test-1
+07/14/2020 22:39:15 - INFO - __main__ -   tokens: [CLS] hillary mystery handler spotted with diaz ##ep ##am pen ( seizure drugs ) right next to [UNK] [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe hmm ##m [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe that ##s the same guy that approached her and told her to talk at the podium a few days ago . then she woke [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe look like he is a doctor with fellowship training in clinical ne ##uro ##phy ##sio ##logy / ep ##ile ##psy . no su ##pr [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe here he is with her back in 2011 . [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe lo ##l . . . she needs more than val ##ium to help her out . [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe hitler had similar support . just saying . [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe @ t ##go ##wd ##ys ##ca pick - me - up @ o ##ann @ abc @ cbs ##ne ##ws @ nbc @ cnn [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe lo ##l ! dude , seriously ? it ' s a com ##s device that the secret service uses . i don ' t [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe is she getting shock treatment too ? [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe she ' s screwed up and their claiming that ' s a flashlight i ' ll bet we never see that so called flashlight [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe they should put her in a cry ##ogenic vault , un - freeze her when they get a cure for her disease and then [SEP] [ p a d p a d p a d ] [CLS] woo ##o , worst photos ##hop ever @ nat ##shu ##pe . half - hearted offence for trump , who ' s been into st ##im ##ula ##nts [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe @ just _ a _ tex ##an s that good for short circuits too ? ? [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe @ davis ##ind ##y [SEP] [ p a d p a d p a d ] [CLS] @ nat ##shu ##pe besides pure evil hillary too sick either illness or drugs to be pre ##s . [SEP] [ p a d p a d p a d ]
+07/14/2020 22:39:15 - INFO - __main__ -   input_ids: 101 18520 6547 28213 7282 2007 12526 13699 3286 7279 1006 18634 5850 1007 2157 2279 2000 100 102 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 17012 2213 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 2008 2015 1996 2168 3124 2008 5411 2014 1998 2409 2014 2000 2831 2012 1996 14502 1037 2261 2420 3283 1012 2059 2016 8271 102 101 1030 14085 14235 5051 2298 2066 2002 2003 1037 3460 2007 7881 2731 1999 6612 11265 10976 21281 20763 6483 1013 4958 9463 18075 1012 2053 10514 18098 102 101 1030 14085 14235 5051 2182 2002 2003 2007 2014 2067 1999 2249 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 8840 2140 1012 1012 1012 2016 3791 2062 2084 11748 5007 2000 2393 2014 2041 1012 102 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 8042 2018 2714 2490 1012 2074 3038 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 1030 1056 3995 21724 7274 3540 4060 1011 2033 1011 2039 1030 1051 11639 1030 5925 1030 6568 2638 9333 1030 6788 1030 13229 102 101 1030 14085 14235 5051 8840 2140 999 12043 1010 5667 1029 2009 1005 1055 1037 4012 2015 5080 2008 1996 3595 2326 3594 1012 1045 2123 1005 1056 102 101 1030 14085 14235 5051 2003 2016 2893 5213 3949 2205 1029 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 2016 1005 1055 14180 2039 1998 2037 6815 2008 1005 1055 1037 15257 1045 1005 2222 6655 2057 2196 2156 2008 2061 2170 15257 102 101 1030 14085 14235 5051 2027 2323 2404 2014 1999 1037 5390 24278 11632 1010 4895 1011 13184 2014 2043 2027 2131 1037 9526 2005 2014 4295 1998 2059 102 101 15854 2080 1010 5409 7760 18471 2412 1030 14085 14235 5051 1012 2431 1011 18627 15226 2005 8398 1010 2040 1005 1055 2042 2046 2358 5714 7068 7666 102 101 1030 14085 14235 5051 1030 2074 1035 1037 1035 16060 2319 1055 2008 2204 2005 2460 13782 2205 1029 1029 102 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 1030 4482 22254 2100 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 101 1030 14085 14235 5051 4661 5760 4763 18520 2205 5305 2593 7355 2030 5850 2000 2022 3653 2015 1012 102 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:39:15 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:39:15 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+07/14/2020 22:39:15 - INFO - __main__ -   label: 0
+07/14/2020 22:39:15 - INFO - __main__ -   ***** Running evaluation on Test Set *****
+07/14/2020 22:39:15 - INFO - __main__ -     Num examples = 28
+07/14/2020 22:39:15 - INFO - __main__ -     Batch size = 16
+Evaluating: 100%|???????????????????????????????????????????????????????????????????????????????????????????????????????????????????| 2/2 [00:03<00:00,  1.69s/it]
+07/14/2020 22:39:19 - INFO - __main__ -   ***** Test Eval results *****
+07/14/2020 22:39:19 - INFO - __main__ -     eval_accuracy = 0.6071428571428571
+07/14/2020 22:39:19 - INFO - __main__ -     eval_loss = 2.2515876591205597
+07/14/2020 22:39:19 - INFO - __main__ -     f_score = 0.588888888888889
+07/14/2020 22:39:19 - INFO - __main__ -     global_step = 1768
+07/14/2020 22:39:19 - INFO - __main__ -     loss = 0.00045027627664453844
+07/14/2020 22:39:19 - INFO - __main__ -     precision = 0.7072649572649573
+07/14/2020 22:39:19 - INFO - __main__ -     recall = 0.6666666666666666
