@@ -1,5 +1,5 @@
 # Coupled Hierarchical Transformer
-Preprocessed SemEval-2017 and PHEME Datasets and Codes for our paper: Coupled Hierarchical Transformer for Stance-Aware Rumor Verification in Social Media Conversations.
+Preprocessed SemEval-2017 and PHEME Datasets and Codes for our paper: Coupled Hierarchical Transformer for Stance-Aware Rumor Verification in Social Media Conversations (https://aclanthology.org/2020.emnlp-main.108.pdf).
 
 Author
 
