@@ -1,5 +1,5 @@
-# DualHierarchicalTransformer
-Preprocessed SemEval-2017 and PHEME Datasets and Codes for our paper: Predicting Stance and Rumor Veracity via Dual Hierarchical Transformer with Pretrained Encoders.
+# Coupled Hierarchical Transformer
+Preprocessed SemEval-2017 and PHEME Datasets and Codes for our paper: Coupled Hierarchical Transformer for Stance-Aware Rumor Verification in Social Media Conversations.
 
 Author
 
@@ -40,7 +40,7 @@ python process_rumor_pheme.py
 
 ### Model Details
 - Hierarchical Transformer for Stance Classification: each conversation thread is split into 10 subthreads, and each subthread is set to have 17 tweets, and each tweet has 30 tokens.
-- Hierarchical Transformer and Dual Hierarchical Transformer for Rumor Verification: Due to memory limitation, each conversation thread is split into 4 subthreads, and each subthread is set to have 17 tweets, and each tweet has 30 tokens.
+- Hierarchical Transformer and Coupled Hierarchical Transformer for Rumor Verification: Due to memory limitation, each conversation thread is split into 4 subthreads, and each subthread is set to have 17 tweets, and each tweet has 30 tokens.
 - Note that for each subthread, you can change the number of tweets and the number of words in each tweet by tuning the two parameters: --max_tweet_num 17 --max_tweet_length 30. Also, it is required that max_tweet_num * max_tweet_length <= 512.
 
 
@@ -64,7 +64,7 @@ sh run_rumor_semeval17.sh
 sh run_rumor_pheme.sh
 ```
 
-### Training for Rumor Verification with Dual Hierarchical Transformer (Multi-task Learning)
+### Training for Rumor Verification with Coupled Hierarchical Transformer (Multi-task Learning)
 - SemEval-2017: This is the training code of tuning parameters on the dev set, and testing on the test set. Note that you can change "CUDA_VISIBLE_DEVICES" based on your available GPUs.
 
 ```sh
